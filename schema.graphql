@@ -1,0 +1,44 @@
+scalar DateTime
+
+type CheckIn {
+  id: ID!
+  comment: String
+  created_at: DateTime!
+  image_url: String
+  name: String
+  updated_at: DateTime!
+}
+
+type Query {
+  check_in_connection(order_by: CheckInOrderByInput): CheckInConnection!
+}
+
+type CheckInConnection {
+  edges: [CheckInEdge!]!
+}
+
+type CheckInEdge {
+  node: CheckIn!
+}
+
+type Mutation {
+  insert_check_in_one(object: check_in_insert_input!): CheckIn!
+}
+
+input CheckInOrderByInput {
+  created_at: OrderByDirectionEnum!
+}
+
+enum OrderByDirectionEnum {
+  asc
+  desc
+}
+
+input check_in_insert_input {
+  comment: String
+  id: Int
+  image_url: String
+  name: String
+}
+
+
